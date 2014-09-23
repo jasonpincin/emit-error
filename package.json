@@ -1,6 +1,6 @@
 {
   "name": "emit-error",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Emit error if callback is executed with a non-null 1st argument",
   "main": "index.js",
   "scripts": {
@@ -15,8 +15,7 @@
     "type": "git",
     "url": "git://github.com/jasonpincin/emit-error.git"
   },
-  "keywords": [
-  ],
+  "keywords": [],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jasonpincin/emit-error/issues"
@@ -27,8 +26,7 @@
     "email": "jason@pincin.com",
     "url": "http://jason.pincin.com/"
   },
-  "contributors": [
-  ],
+  "contributors": [],
   "devDependencies": {
     "istanbul": "~0.2.8",
     "tap-spec": "~0.1.9",

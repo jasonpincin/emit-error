@@ -1,0 +1,54 @@
+{
+  "name": "emit-error",
+  "version": "0.0.0",
+  "description": "Emit error if callback is executed with a non-null 1st argument",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test",
+    "benchmark": "make benchmark",
+    "travis-test": "make test && ((cat coverage/lcov.info | coveralls) || exit 0)",
+    "view-cover": "open coverage/index.html",
+    "vc": "open coverage/index.html",
+    "help": "make help"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jasonpincin/emit-error.git"
+  },
+  "keywords": [
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jasonpincin/emit-error/issues"
+  },
+  "homepage": "https://github.com/jasonpincin/emit-error",
+  "author": {
+    "name": "Jason Pincin",
+    "email": "jason@pincin.com",
+    "url": "http://jason.pincin.com/"
+  },
+  "contributors": [
+  ],
+  "devDependencies": {
+    "istanbul": "~0.2.8",
+    "tap-spec": "~0.1.9",
+    "tap-dot": "^0.2.2",
+    "tape": "~2.12.3"
+  },
+  "testling": {
+    "files": "test/*.js",
+    "browsers": [
+      "ie/8..latest",
+      "firefox/16..latest",
+      "firefox/nightly",
+      "chrome/22..latest",
+      "chrome/canary",
+      "opera/12..latest",
+      "opera/next",
+      "safari/5.1..latest",
+      "ipad/6.0..latest",
+      "iphone/6.0..latest",
+      "android-browser/4.2..latest"
+    ]
+  }
+}

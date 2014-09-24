@@ -54,13 +54,16 @@ did not get an error
 
 `var emitError = require('emit-error')`
 
-### var wrappedCb = emitError(emitter, [options,] cb)
+### var wrappedCb = emitError(emitter [, options, cb])
 
 Returns a function that when called with a non-falsey first argument, will emit that value 
 as an `error` event on the given event `emitter`. If a falsey first argument is passed to the 
 generated function, or if an `options` object is provided with a property of `alwaysCall` set to 
 `true`, then the provided callback `cb` will be executed with all arguments passed to the 
 generated function.
+
+If no callback `cb` is provided, then the generated callback will simply emit error events when 
+called with a non-falsey 1st argument.
 
 *options:*
 - alwaysCall: `true` or `false` - if true, the provided callback `cb` will always be called, otherwise

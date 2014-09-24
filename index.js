@@ -6,7 +6,7 @@ module.exports = function emitError (emitter, options, cb) {
         var args = Array.prototype.slice.call(arguments, 0)
         if (args[0])
             emitter.emit('error', args[0])
-        if (!args[0] || options.alwaysCall)
+        if (cb && (!args[0] || options.alwaysCall))
             return cb.apply(cb, args)
     }
 }

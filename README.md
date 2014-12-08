@@ -15,7 +15,7 @@ Emit error if callback is executed with a non-null 1st argument
 
 ```
 var EventEmitter = require('events').EventEmitter,
-    emitError    = require('..')
+    emitError    = require('emit-error')
 
 function callback (err) {
     console.log('did not get an error')
@@ -37,16 +37,6 @@ output of above:
 got error: Error: broke
 did not get an error
 ```
-
-# toc
-
-- [api](#api)
-  - [emitError](#emiterror)
-  - [var wrappedCb = emitError(emitter, [options,] cb)](#var-wrappedcb-=-emiterroremitter-options-cb)
-- [testing](#testing)
-  - [options](#options)
-  - [patterns](#patterns)
-  - [html coverage report](#html-coverage-report)
 
 ## api
 

@@ -5,11 +5,7 @@
 [![NPM version](https://badge.fury.io/js/emit-error.png)](http://badge.fury.io/js/emit-error)
 [![Davis Dependency Status](https://david-dm.org/jasonpincin/emit-error.png)](https://david-dm.org/jasonpincin/emit-error)
 
-[![browser support](https://ci.testling.com/jasonpincin/emit-error.png)
-](https://ci.testling.com/jasonpincin/emit-error)
-
-
-Emit error if callback is executed with a non-null 1st argument
+Emit error if callback is executed with a truthy 1st argument
 
 ## example
 

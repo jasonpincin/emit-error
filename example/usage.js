@@ -1,16 +1,28 @@
 var EventEmitter = require('events').EventEmitter,
     emitError    = require('..')
 
-function callback (err) {
-    console.log('did not get an error')
+var emitter = new EventEmitter().on('error', function (err) {
+    console.error(err)
+})
+
+function fail (cb) {
+    cb(new Error('failed'))
 }
 
-function onError (err) {
-    console.error('got error: ' + err)
+function succeed (cb) {
+    cb(null, 'success')
 }
 
-var emitter = new EventEmitter().on('error', onError)
-var doSomething = emitError(emitter, callback)
+fail(emitError(emitter, function (status) {
+    console.log('will not see this')
+}))
 
-doSomething(new Error('broke'))
-doSomething()
+fail(emitError(emitter, {alwaysCall: true}, function (err, status) {
+    // When always call specified, err is passed
+    console.log('will see this')
+}))
+
+succeed(emitError(emitter, function (status) {
+    // Gets called with status of success
+    console.log(status)
+}))

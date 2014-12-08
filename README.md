@@ -13,25 +13,31 @@ Emit error if callback is executed with a truthy 1st argument
 var EventEmitter = require('events').EventEmitter,
     emitError    = require('emit-error')
 
-function callback (err) {
-    console.log('did not get an error')
+var emitter = new EventEmitter().on('error', function (err) {
+    console.error(err)
+})
+
+function fail (cb) {
+    cb(new Error('failed'))
 }
 
-function onError (err) {
-    console.error('got error: ' + err)
+function succeed (cb) {
+    cb(null, 'success')
 }
 
-var emitter = new EventEmitter().on('error', onError)
-var doSomething = emitError(emitter, callback)
+fail(emitError(emitter, function (status) {
+    console.log('will not see this')
+}))
 
-doSomething(new Error('broke'))
-doSomething()
-```
+fail(emitError(emitter, {alwaysCall: true}, function (err, status) {
+    // When always call specified, err is passed
+    console.log('will see this')
+}))
 
-output of above:
-```
-got error: Error: broke
-did not get an error
+succeed(emitError(emitter, function (status) {
+    // Gets called with status of success
+    console.log(status)
+}))
 ```
 
 ## api
@@ -42,18 +48,19 @@ did not get an error
 
 ### var wrappedCb = emitError(emitter [, options, cb])
 
-Returns a function that when called with a non-falsey first argument, will emit that value 
-as an `error` event on the given event `emitter`. If a falsey first argument is passed to the 
-generated function, or if an `options` object is provided with a property of `alwaysCall` set to 
-`true`, then the provided callback `cb` will be executed with all arguments passed to the 
-generated function.
+Returns a function that when called with a truthy first argument, will emit that value
+as an `error` event on the supplied event `emitter`. If the option `alwaysCall` is defined, 
+the provided `cb` will be executed in all cases with all arguments supplied to `wrappedCb`, otherwise 
+if the 1st argument to `wrappedCb` is falsey, the supplied `cb` will be executed with all but the 
+1st argument supplied to `wrappedCb`.
 
 If no callback `cb` is provided, then the generated callback will simply emit error events when 
 called with a non-falsey 1st argument.
 
 *options:*
-- alwaysCall: `true` or `false` - if true, the provided callback `cb` will always be called, otherwise
-  it will only be called when a the first argument is falsey
+- alwaysCall: `true` or `false` - if true, the provided callback `cb` will always be called (and include 
+  the 1st argument), otherwise it will only be called when a the first argument is falsey (and without the 
+  1st argument)
 
 
 ## testing

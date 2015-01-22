@@ -9,7 +9,7 @@ Emit error if callback is executed with a truthy 1st argument
 
 ## example
 
-```
+```javascript
 var EventEmitter = require('events').EventEmitter,
     emitError    = require('emit-error')
 
@@ -42,9 +42,9 @@ succeed(emitError(emitter, function (status) {
 
 ## api
 
-### emitError
-
-`var emitError = require('emit-error')`
+```javascript
+var emitError = require('emit-error')
+```
 
 ### var wrappedCb = emitError(emitter [, options, cb])
 

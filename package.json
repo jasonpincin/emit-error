@@ -15,7 +15,11 @@
     "type": "git",
     "url": "git://github.com/jasonpincin/emit-error.git"
   },
-  "keywords": [],
+  "keywords": [
+    "emit",
+    "error",
+    "callback"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jasonpincin/emit-error/issues"

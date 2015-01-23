@@ -7,6 +7,11 @@
 
 Emit error if callback is executed with a truthy 1st argument
 
+## deprecated
+
+This module has been deprecated. Use [on-error](https://github.com/jasonpincin/on-error) instead.
+
+
 ## example
 
 ```javascript
